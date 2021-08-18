@@ -1,0 +1,17 @@
+server:
+  port: 8090
+
+---
+jasypt:
+  encryptor:
+    password: 123456!@
+
+info:
+  username: H2ry7eTSXVR9LevMk5sIzQ==
+  password: Kr2hKTxNGXsJdP4MBmD1Gg==
+
+---
+vegetables:
+  potato: "potato"
+  eggplant: "eggplant"
+  greenpeper: "greenpeper"
