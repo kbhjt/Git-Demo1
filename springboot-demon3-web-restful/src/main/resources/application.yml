@@ -1,0 +1,6 @@
+#解决delete请求不可用
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
