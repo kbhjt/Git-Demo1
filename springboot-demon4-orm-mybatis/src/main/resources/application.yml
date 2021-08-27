@@ -1,0 +1,15 @@
+#解决delete请求不可用
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  datasource:
+    db1:
+     jdbc-url: jdbc:mysql://localhost:3306/spring_boot
+     username: root
+     password: root
+    db2:
+      jdbc-url: jdbc:mysql://localhost:3306/shixun
+      username: root
+      password: root
