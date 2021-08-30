@@ -30,4 +30,20 @@ public class GuestController {
         return guestService.guestById(id);
     }
 
+    @GetMapping("/update")
+    public Guest update(Integer id, String name, String role){
+        Guest newGuest = new Guest(id,name,role);
+        guestService.update(newGuest);
+        return newGuest;
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Integer id){
+        if(id != 0){
+            guestService.delete(id);
+        }else{
+            guestService.deleteAll();
+        }
+        return "Success";
+    }
 }
