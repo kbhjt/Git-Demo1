@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+    <!-- 字符串的拼接方式 -->
+    <h6>===字符串的拼接方式===</h6>
+    <p th:text="${person.name} + ' is' + ${person.age}"></p>
+    <p th:text="|${person.name} is ${person.age}|"></p>
+
+    <!-- if条件语句的使用 -->
+    <h6>===if条件语句的使用===</h6>
+    <p th:text="${msg}" th:if="${msg=='yes'}"></p>
+    <p th:text="${msg}" th:if="${msg=='no'}"></p>
+
+    <!-- unless的使用 -->
+    <h6>===unless的使用===</h6>
+    <p th:text="${msg}" th:unless="${msg==no}"></p>
+
+    <!-- switch的使用 -->
+    <h6>===switch的使用===</h6>
+    <div th:switch="${num}">
+        <p th:case="1"> 1 </p>
+        <p th:case="2"> 2 </p>
+        <p th:case="*"> * </p>
+    </div>
+
+    <!-- for循环的使用 -->
+    <h6>===for循环的使用===</h6>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>index</th>
+                <th>count</th>
+                <th>size</th>
+                <th>current</th>
+                <th>first</th>
+                <th>last</th>
+                <th>even</th>
+                <th>odd</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="data:${personList}">
+                <td th:text="${data.name}">name</td>
+                <td th:text="${data.age}">age</td>
+                <td th:text="${dataStat.index}">index</td>
+                <td th:text="${dataStat.count}">count</td>
+                <td th:text="${dataStat.size}">size</td>
+                <td th:text="${dataStat.current}">current</td>
+                <td th:text="${dataStat.first}">first</td>
+                <td th:text="${dataStat.last}">last</td>
+                <td th:text="${dataStat.even}">even</td>
+                <td th:text="${dataStat.odd}">odd</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

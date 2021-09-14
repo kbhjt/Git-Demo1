@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Express</title>
+</head>
+<body>
+    <!-- 内嵌对象中 strings dates 的使用 -->
+    <p th:text="${date}"></p>
+    <p th:text="${#dates.format(date,'yyyy-MM-dd HH:mm:ss')}"></p>
+
+    <!-- strings的使用 -->
+    <p th:text="${#strings.isEmpty(str)}"></p>
+    <p th:text="${#strings.length(str)}"></p>
+    <p th:text="${#strings.equals(str,'nchu')}"></p>
+
+    <!-- 内联表达式的使用 -->
+    <p>加油，[[${info}]]</p>
+    <p>加油，<span th:text="${info}"></span></p>
+    <!-- 禁用内联表达式 -->
+    <p th:inline="none">加油，[[<span th:text="${info}"></span>]]</p>
+</body>
+
+    <!-- 内联JavaScript -->
+    <!--同样支持动静分离  但原本的注释不能使用-->
+    <!--注意： 只能在html文件中的js代码里生效  外部的js文件中无法使用-->
+    <script type="text/javascript" th:inline="javascript">
+        var info = /*[[${info}]]*/ '测试';
+        console.log(info);
+    </script>
+
+    <!--类似js，同样支持css-->
+    <!--<style th:inline="css">-->
+
+    <!--</style>-->
+
+</html>
