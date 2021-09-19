@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{css/bootstrap.css}">
+</head>
+<body>
+  <h2>国内疫情情况如下</h2>
+  <br>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>地区</th>
+        <th>现有</th>
+        <th>累计</th>
+        <th>治愈</th>
+        <th>死亡</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="bean:${list}">
+        <td th:text="${bean.area}">area</td>
+        <td th:text="${bean.nowConfirm}">nowConfirm</td>
+        <td th:text="${bean.confirm}">confirm</td>
+        <td th:text="${bean.dead}">dead</td>
+        <td th:text="${bean.heal}">heal</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
