@@ -2,21 +2,33 @@ package com.nchu.handler;
 
 import com.google.gson.Gson;
 import com.nchu.bean.DataBean;
+import com.nchu.service.DataService;
 import com.nchu.util.HttpURLConnectionUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
-import java.io.FileReader;
+import javax.annotation.PostConstruct;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class DataHandler {
 
     private static String strUrl = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5";
 
-    public static void main(String[] args) {
-        getData();
-    }
+    private static SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
 
+    @Autowired
+    private DataService dataService;
+
+    /**
+     * 数据采集
+     * @return
+     */
     public static List<DataBean> getData(){
         ArrayList<DataBean> result = new ArrayList<>();
         try {
@@ -40,10 +52,9 @@ public class DataHandler {
             //data数据map
             Map map = gson.fromJson(subStr,Map.class);
             ArrayList areaList = (ArrayList) map.get("areaTree");
-//            System.out.println(areaList);
             Map dataMap = (Map) areaList.get(0);
             ArrayList childrenList = (ArrayList) dataMap.get("children");
-            System.out.println(childrenList);
+
             for(int i=0; i < childrenList.size(); i++){
                 Map tmp = (Map) childrenList.get(i);
                 String area = (String) tmp.get("name");
@@ -51,11 +62,11 @@ public class DataHandler {
                 Map totalMap = (Map) tmp.get("total");
                 double nowConfirm = (double) totalMap.get("nowConfirm");
                 double confirm = (double) totalMap.get("confirm");
-                double dead = (double) totalMap.get("dead");
                 double heal = (double) totalMap.get("heal");
+                double dead = (double) totalMap.get("dead");
 
-                DataBean dataBean = new DataBean(area,(int)nowConfirm,
-                        (int)confirm,(int)dead,(int) heal);
+                DataBean dataBean = new DataBean(0L,area,(int)nowConfirm,
+                        (int)confirm,(int)heal,(int) dead);
                 result.add(dataBean);
             }
         } catch (Exception e) {
@@ -64,4 +75,33 @@ public class DataHandler {
         System.out.println(result);
         return result;
     }
+
+    /**
+     * 数据初始化
+     *  在服务器加载Servlet时运行
+     *  只运行一次
+     */
+    @PostConstruct
+    public void saveData(){
+        List<DataBean> dataBeans = getData();
+        //先清空数据库原有数据
+        dataService.remove(null);
+        //批量新增数据
+        dataService.saveBatch(dataBeans);
+    }
+
+    /**
+     * 定时更新数据
+     */
+    @Scheduled(cron = "0 0 0/1 * * ? ")
+    public void updateData(){
+        System.out.println("更新数据啦");
+        System.out.println("当前时间：" + format.format(new Date()));
+        List<DataBean> dataBeans = getData();
+        //先清空数据库原有数据
+        dataService.remove(null);
+        //批量新增数据
+        dataService.saveBatch(dataBeans);
+    }
+
 }
