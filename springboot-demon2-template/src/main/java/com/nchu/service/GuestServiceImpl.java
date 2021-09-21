@@ -1,7 +1,7 @@
 package com.nchu.service;
 
 import com.nchu.bean.Guest;
-import com.nchu.dao.GuestDao;
+import com.nchu.mapper.GuestDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

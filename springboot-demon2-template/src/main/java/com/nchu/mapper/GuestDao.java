@@ -1,4 +1,4 @@
-package com.nchu.dao;
+package com.nchu.mapper;
 
 import java.util.ArrayList;
 import java.util.List;

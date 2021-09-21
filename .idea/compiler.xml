@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springboot-demon5-swagger" />
+        <module name="springboot-demon2-template" />
+        <module name="springboot-demon9-database" />
+        <module name="springboot-demon3-web-restful" />
+        <module name="springboot-demon8-thymeleaf" />
+        <module name="springboot-demon4-orm-mybatis" />
+        <module name="springboot-demon7-cache" />
+        <module name="springboot-project-epidemic-system" />
+        <module name="springboot-demon4-mybatis" />
+        <module name="springboot-demon9-databasepool" />
+        <module name="springboot-demon1" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springboot-demon1" target="1.8" />
+      <module name="springboot-demon2-template" target="1.8" />
+      <module name="springboot-demon3-web-restful" target="1.8" />
+      <module name="springboot-demon4-mybatis" target="1.8" />
+      <module name="springboot-demon4-orm-mybatis" target="1.8" />
+      <module name="springboot-demon5-swagger" target="1.8" />
+      <module name="springboot-demon7-cache" target="1.8" />
+      <module name="springboot-demon8-thymeleaf" target="1.8" />
+      <module name="springboot-demon9-database" target="1.5" />
+      <module name="springboot-demon9-databasepool" target="1.5" />
+      <module name="springboot-project-epidemic-system" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springboot-demon1" options="-parameters" />
+      <module name="springboot-demon2-template" options="-parameters" />
+      <module name="springboot-demon3-web-restful" options="-parameters" />
+      <module name="springboot-demon4-mybatis" options="-parameters" />
+      <module name="springboot-demon4-orm-mybatis" options="-parameters" />
+      <module name="springboot-demon5-swagger" options="-parameters" />
+      <module name="springboot-demon7-cache" options="-parameters" />
+      <module name="springboot-demon8-thymeleaf" options="-parameters" />
+      <module name="springboot-project-epidemic-system" options="-parameters" />
+    </option>
+  </component>
+</project>

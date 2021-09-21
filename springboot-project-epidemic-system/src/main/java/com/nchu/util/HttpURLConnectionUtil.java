@@ -67,7 +67,8 @@ public class HttpURLConnectionUtil {
 
     public static void main(String[] args) {
         String url = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5";
-        String result = doGet(url);
+        String url1 = "https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=chinaDayAddList";
+        String result = doGet(url1);
         System.out.println(result);
     }
 }

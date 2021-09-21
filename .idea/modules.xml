@@ -4,6 +4,17 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Git-Demo1.iml" filepath="$PROJECT_DIR$/.idea/Git-Demo1.iml" />
       <module fileurl="file://$PROJECT_DIR$/demon-module-1/demon-module-1.iml" filepath="$PROJECT_DIR$/demon-module-1/demon-module-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-demon1/springboot-demon1.iml" filepath="$PROJECT_DIR$/springboot-demon1/springboot-demon1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-demon2-template/springboot-demon2-template.iml" filepath="$PROJECT_DIR$/springboot-demon2-template/springboot-demon2-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-demon3-web-restful/springboot-demon3-web-restful.iml" filepath="$PROJECT_DIR$/springboot-demon3-web-restful/springboot-demon3-web-restful.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-demon4-orm-mybatis/springboot-demon4-orm-mybatis.iml" filepath="$PROJECT_DIR$/springboot-demon4-orm-mybatis/springboot-demon4-orm-mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-demon5-swagger/springboot-demon5-swagger.iml" filepath="$PROJECT_DIR$/springboot-demon5-swagger/springboot-demon5-swagger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-demon6-groovy-cli/springboot-demon6-groovy-cli.iml" filepath="$PROJECT_DIR$/springboot-demon6-groovy-cli/springboot-demon6-groovy-cli.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-demon7-cache/springboot-demon7-cache.iml" filepath="$PROJECT_DIR$/springboot-demon7-cache/springboot-demon7-cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-demon8-thymeleaf/springboot-demon8-thymeleaf.iml" filepath="$PROJECT_DIR$/springboot-demon8-thymeleaf/springboot-demon8-thymeleaf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-demon9-database/springboot-demon9-database.iml" filepath="$PROJECT_DIR$/springboot-demon9-database/springboot-demon9-database.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-demon9-databasepool/springboot-demon9-databasepool.iml" filepath="$PROJECT_DIR$/springboot-demon9-databasepool/springboot-demon9-databasepool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-project-epidemic-system/springboot-project-epidemic-system.iml" filepath="$PROJECT_DIR$/springboot-project-epidemic-system/springboot-project-epidemic-system.iml" />
     </modules>
   </component>
 </project>

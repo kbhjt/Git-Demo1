@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>全国疫情新增趋势</title>
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script th:inline="javascript">
+
+        var dateStr = [[${dateList}]];
+        var confirmStr = [[${confirmList}]];
+        var suspectStr = [[${suspectList}]];
+
+        // 基于准备好的dom 初始化实例
+        var mychart = echarts.init(document.getElementById('main'));
+        var option={
+            // 标题
+            title: {
+                text: '全国疫情新增趋势'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['新增确诊','新增疑似']
+            },
+            // x轴数据
+            xAxis: {
+                data: dateStr
+            },
+            // y轴数据
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: '新增确诊',
+                    type: 'line',
+                    data: confirmStr
+                },
+                {
+                    name: '新增疑似',
+                    type: 'line',
+                    data: suspectStr
+                }
+            ]
+        };
+        // 将参数设置进去
+        mychart.setOption(option);
+    </script>
+</body>
+</html>
