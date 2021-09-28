@@ -7,6 +7,7 @@ import com.nchu.bean.MapBean;
 import com.nchu.handler.GraphHandler;
 import com.nchu.service.DataService;
 import com.nchu.service.GraphService;
+import com.nchu.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +25,48 @@ public class DataController {
     @Autowired
     private GraphService graphService;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
     @GetMapping("/")
+    public String welcome(Model model){
+        List<DataBean> dataList = dataService.list();
+        model.addAttribute("list",dataList);
+
+        List<GraphBean> graphList = graphService.list();
+
+        ArrayList<String> dateList = new ArrayList<>();
+        ArrayList<Integer> confirmList = new ArrayList<>();
+        ArrayList<Integer> suspectList = new ArrayList<>();
+
+        for(int i=0; i < graphList.size(); i++){
+            GraphBean graphBean = graphList.get(i);
+            dateList.add(graphBean.getDate());
+            confirmList.add(graphBean.getConfirm());
+            suspectList.add(graphBean.getSuspect());
+        }
+        model.addAttribute("dateList",dateList);
+        model.addAttribute("confirmList",confirmList);
+        model.addAttribute("suspectList",suspectList);
+
+        List<DataBean> dataBeanList = dataService.list();
+
+        List<MapBean> result1 = new ArrayList<>();
+        List<MapBean> result2 = new ArrayList<>();
+
+        for (DataBean dataBean : dataBeanList) {
+            MapBean map1 = new MapBean(dataBean.getArea(),dataBean.getNowConfirm());
+            MapBean map2 = new MapBean(dataBean.getArea(),dataBean.getConfirm());
+            result1.add(map1);
+            result2.add(map2);
+        }
+        model.addAttribute("mapData1",new Gson().toJson(result1));
+        model.addAttribute("mapData2",new Gson().toJson(result2));
+
+        return "index";
+    }
+
+    @GetMapping("/list")
     public String getData(Model model){
         List<DataBean> dataList = dataService.list();
         model.addAttribute("list",dataList);
@@ -69,5 +111,21 @@ public class DataController {
         model.addAttribute("mapData2",new Gson().toJson(result2));
 
         return "map";
+    }
+
+    @GetMapping("/graphByRedis")
+    public String graphByRedis(Model model){
+        ArrayList dateList = new Gson().fromJson(
+                (String)redisUtil.get("EACHARTS_DATELIST"),ArrayList.class);
+        ArrayList confirmList = new Gson().fromJson(
+                (String)redisUtil.get("EACHARTS_CONFIRMLIST"),ArrayList.class);
+        ArrayList suspectList = new Gson().fromJson(
+                (String)redisUtil.get("EACHARTS_SUSPECTLIST"),ArrayList.class);
+
+        model.addAttribute("dateList",dateList);
+        model.addAttribute("confirmList",confirmList);
+        model.addAttribute("suspectList",suspectList);
+
+        return "graph";
     }
 }
